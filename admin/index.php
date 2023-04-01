@@ -1,4 +1,6 @@
-<?php include('include/header.php'); ?>
+<?php include('include/header.php'); 
+include('../middleware/adminmiddleware.php');
+?>
 
 <div class="container">
 
@@ -71,6 +73,8 @@
 <hr class="dark horizontal my-0">
 <div class="card-footer p-3">
 <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
+</div>
+</div>
 </div>
 </div>
 </div>

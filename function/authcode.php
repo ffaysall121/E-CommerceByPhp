@@ -1,9 +1,9 @@
 <?php
 session_start();
-
 include("../config/connectDB.php");
+include('function.php');
 
-    if (isset($_POST['register_btn']))
+if (isset($_POST['register_btn']))
  {
         $name= mysqli_real_escape_string($connection,$_POST['name']);
         $username= mysqli_real_escape_string($connection,$_POST['username']);
@@ -17,8 +17,7 @@ include("../config/connectDB.php");
 
         if (mysqli_num_rows($runSql)>0)
         {
-            $_SESSION['message']="Email address are already registered. ! try again with another email address";
-            header('Location:../register.php');
+            redirect("Email address are already registered","../register.php");
         }
 
         else
@@ -30,24 +29,25 @@ include("../config/connectDB.php");
             $sql="INSERT INTO user (name,username,phone,email,password,confirmpassword) VALUES('$name','$username','$phone','$email','$password','$confirm_password')";
             $sql_insert =mysqli_query($connection,$sql);
             if ($sql_insert) {
-                $_SESSION ['message'] ='Successfully registered';
-                header('Location:../login.php');
-                
+                header('Location:../login.php');   
             }
             else{
-                $_SESSION ['message'] ='can not successfully registered';
+                $_SESSION['message'] ="something went wrong";
                 header('Location:../register.php');
+                // redirect(" Something Wrong ","../register.php");
             }
 
         }
 
         else
         {
-            $_SESSION['message']="password are not Match with confirm password";
-            header('Location:./register.php');
+            redirect("password are not Match with confirm password","../register.php");
+     
         }
     }
 }
+
+
 elseif (isset($_POST['login_btn']))
  {
     $email= mysqli_real_escape_string($connection,$_POST['email']);
@@ -59,20 +59,32 @@ elseif (isset($_POST['login_btn']))
     {
         $userData = mysqli_fetch_array($runLoginSql);
         $uname=$userData['name'];
-        $uemail=$userData['name'];
+        $uemail=$userData['email'];
+        $role=$userData['role'];
         $_SESSION['auth']= true;
         $_SESSION['user_details']= [
             'name' => $uname,
-            'email' => $uemail,
+            'email' => $uemail,    
         ];
 
-        $_SESSION['message']="Successfully Logged in";
-        header('Location:../index.php');
-    }
-    else
-    {
-        $_SESSION['message']="Invalid email or password";
-        header('Location:../login.php');
-    }
+        $_SESSION['role'] = $role;
 
- }
+        if($role==1)
+        {
+            // redirect("Welcome to dashboard","../admin/index.php");
+            header('Location:../admin/index.php');
+        }
+        else
+        {
+            redirect("Successfully Logged in","../index.php");
+            // header('Location:../index.php');  
+        }
+
+    }
+  }
+else
+    {
+        redirect("Invalid email or password","Location:../login.php");
+        //  header('../login.php'); catagories
+    }
+ 
