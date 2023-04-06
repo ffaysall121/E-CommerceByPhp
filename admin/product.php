@@ -1,4 +1,5 @@
-<?php include('../middleware/adminmiddleware.php');
+<?php
+include('../middleware/adminmiddleware.php');
 
 include('include/header.php');
 ?>
@@ -7,11 +8,11 @@ include('include/header.php');
   <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-             <h4>Categories</h4>
+            <div class="card-header" id="pTbl" >
+             <h4>Product</h4>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" >
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -24,14 +25,14 @@ include('include/header.php');
                     <tbody>
                   
                         <?php
-                        $ctagry = getAll("catagories");
+                        $product = getAll("product");
                         
 
-                        if(mysqli_num_rows($ctagry)>0)
+                        if(mysqli_num_rows($product)>0)
                         {
-                            foreach ($ctagry as $item) {
+                            foreach ($product as $item) {
 
-                                ?>
+                        ?>
                                 <tr>
                                     <td><?=$item['id'];?></td>
                                     <td><?=$item['name'];?></td>
@@ -41,11 +42,10 @@ include('include/header.php');
                                 </td>
                                     <td><?=$item['status']== '0'? 'visible':'Hidden' ;?></td>
                                     <td>
-                                        <a href="editcat.php?id=<?=$item['id'];?>" class="btn btn-primary">Edit</a>
-                                        <form action="code.php" method="POST" style="display: inline-block;">
-                                            <input type="hidden" name="catID" value="<?=$item['id'];?>">
-                                            <button type="submit" class="btn btn-danger" name="deleteCatBtn">DElete</button>
-                                    </form>
+                                        <a href="editProduct.php?id=<?=$item['id'];?>" class="btn btn-primary">Edit</a>
+        
+                                            <button type="submit" class="btn btn-danger deleteProductBtn" name="deleteProductBtn" value="<?=$item['id'];?>">DElete</button>
+                                   
                                        
                                     </td>
                                 </tr>

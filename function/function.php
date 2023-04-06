@@ -1,5 +1,8 @@
 <?php
-    include('../config/connectDB.php');
+
+    session_start();
+   include('../config/connectDB.php'); 
+
     function redirect($message,$url)
     {
         $_SESSION['message'] = $message;
@@ -15,8 +18,6 @@
         $sqlRun=mysqli_query($connection,$sql);
 
         return $sqlRun;
-
-
     }
 
     function getAll($table)
@@ -28,5 +29,7 @@
         return $sqlRun;
 
     }
+
+
 
 ?>

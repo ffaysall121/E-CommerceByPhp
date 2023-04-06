@@ -1,5 +1,7 @@
-<?php include('include/header.php');
+<?php 
 include('../middleware/adminmiddleware.php');
+include('include/header.php');
+
 ?>
 
 <div class="container">
@@ -10,7 +12,6 @@ include('../middleware/adminmiddleware.php');
     {
         $id = $_GET['id'];
         $category = getById("catagories",$id);
-
         if(mysqli_num_rows($category) > 0){
             $data = mysqli_fetch_array($category);
         ?>
@@ -22,6 +23,7 @@ include('../middleware/adminmiddleware.php');
             <div class="card">
                 <div class="card-header">
                     <h4>Add Catagories</h4>
+                    <a href="category.php" class="btn btn-primary float-end">Back</a>
                 </div>
                 <div class="card-body">
                 <div class="row">

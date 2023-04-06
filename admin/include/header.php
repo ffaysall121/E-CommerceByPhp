@@ -1,8 +1,6 @@
 <?php
-session_start();
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +34,18 @@ session_start();
     .form-control{
       border: 1px solid gray !important;
       padding: 8px 10px;
+    }
+    .form-select{
+      border: 1px solid gray !important;
+      padding: 8px 10px;
+    }
+
+    th,td{
+      text-align: center;
+      vertical-align: middle;
+    }
+    .selectBox{
+      padding: 40px;
     }
   </style>
 

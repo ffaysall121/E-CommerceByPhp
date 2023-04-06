@@ -1,5 +1,6 @@
-<?php include('include/header.php');
+<?php 
 include('../middleware/adminmiddleware.php');
+include('include/header.php');
 ?>
 
 <div class="container">
@@ -26,7 +27,7 @@ include('../middleware/adminmiddleware.php');
                 <div class="row">
                     <div class="col-md-12">
                     <label for="">Description </label>
-                    <textarea name="description"  rows="3" class="form-control"></textarea>
+                    <textarea name="description"  rows="3" cols="50" class="form-control"></textarea>
                     </div>
                 </div>
 
@@ -53,19 +54,17 @@ include('../middleware/adminmiddleware.php');
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                     <label for="">Upload Image </label>
                     <input type="file" name="image" class="form-control">
                     </div>
-                </div>
-
-                <div class="row">
-                   <div class="col-md-4">
+                
+                   <div class="col-md-4 mb-6">
                    <label for="">Status </label>
                    <input type="checkbox" name="status"> 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-6">
                    <label for="">Popular </label>
                     <input type="checkbox" name="popular">
                     </div>

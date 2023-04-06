@@ -1,7 +1,7 @@
 <?php
-session_start();
-include("../config/connectDB.php");
 include('function.php');
+include("../config/connectDB.php");
+
 
 if (isset($_POST['register_btn']))
  {
